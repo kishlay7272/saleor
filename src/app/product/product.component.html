@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+</head>
+<!-- <style>
+
+</style> -->
+<!-- </head> -->
+
+<body *ngIf="id">
+    <div class="container">
+        <div class="card"  >
+             <img class="card-img" src="{{product.thumbnail.url}}" >
+                <div class="link">
+                    <h1>{{product.name}}</h1>
+                    <input  type="number" class="input" min="1" [(ngModel)] ="quantity" (change)="updateQuantity($event.target.value)" />
+            <a (click)="addToCart(product.id,product.variants[0].id)"><button>add to cart</button></a>
+            <a [routerLink]="['/checkout']">  <button>Proceed To Checkout</button></a>
+
+                </div>
+        </div>
+      </div>
+    <!-- <tr *ngFor="let user of users[0].data.products.edges"> -->
+
+    <!-- <script src="product.js"></script> -->
+    <!-- <div class="row">
+        <div class="col-md-4" id="product-1">
+            <h2>{{product.name}}</h2>
+
+            <img src="{{product.thumbnail.url}}" /><br />
+           
+            <input type="number" class="input" value={{quantity}} min="1" />
+            <a (click)="addToCart()"><button>Proceed To Checkout</button></a>
+          
+          
+
+        </div> -->
+
+
+
+    <!-- </div> -->
+</body>
+
+<body *ngIf="!id">
+
+    <table id="customers">
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Cateogary Name</th>
+        </tr>
+        <tr *ngFor="let user of users[0].data.products.edges">
+            <td>{{user.node.name}}</td>
+            <td>{{user.node.pricing.priceRange.start.gross.amount | currency:'INR':true}}</td>
+            <td>{{user.node.category.name}}</td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
+
+<router-outlet></router-outlet>

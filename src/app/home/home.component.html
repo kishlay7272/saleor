@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  
+
+      
+<h2>SHOP BY CATEGORY</h2>
+    <div class="container" *ngFor="let  user of productList.data.categories.edges" >
+        <div class="card"  >
+            <a [routerLink]="['/category/'+user.node.id]">   <img class="card-img" src="{{user.node.backgroundImage.url}}" alt="Bologna">
+                <div class="link">
+                    <h1>{{user.node.name}}</h1>      
+                </div></a>
+        </div>
+      </div>
+
+</body>
+
+</html>
+
+<router-outlet></router-outlet>

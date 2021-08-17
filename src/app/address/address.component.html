@@ -1,0 +1,49 @@
+<body *ngIf='!id'>
+        <h2>Address</h2>
+
+        <div  class=btn1 *ngFor="let  key of userDetails.data.me.addresses ">
+            <!-- <div class="billing"> -->
+                <button [routerLink]="['/edit/'+key.id]" (click)="defaultAddress(key)" >Edit</button>
+
+                <h5 class="addressText">{{key.firstName}}
+                    {{key.lastName}}
+                    <br>{{key.streetAddress1}}<br *ngIf="key.streetAddress2">{{key.streetAddress2}}<br>{{key.city}},{{key.countryArea}}<br>{{key.country.country}}
+                    <br>Postal Code- {{key.postalCode}}<br>phone-
+                    {{key.phone}} </h5>
+                <!-- <                                                             {{product.totalPrice}}</h4> -->
+                <!-- <a [routerLink]="['/checkout/address']">  <button>Checkout</button></a> -->
+
+            <!-- </div> -->
+                </div>
+      
+</body>
+
+<body *ngIf='id'>
+    <h2>Edit Address</h2>
+    <form>
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname" [(ngModel)]="firstName" ng-init="this.firstName" value="this.firstName"><br>
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="lastName" value="Doe"><br><br>
+        <label for="lname">city:</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="city" value="Doe"><br><br>
+        <label for="lname">Company Name</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="companyName" value="Doe"><br><br>
+        <label for="lname">Country Area</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="countryArea" value="Doe"><br><br>
+        <label for="lname">Country</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="country" value="Doe"><br><br>
+        <label for="lname">Phone</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="phone" value="Doe"><br><br>
+        <label for="lname">Postal Code</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="postalCode" value="Doe"><br><br>
+        <label for="lname">Address Line 1</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="streetAddress1" value="Doe"><br><br>
+        <label for="lname">Address Line 2</label><br>
+        <input type="text" id="lname" name="lname" [(ngModel)]="streetAddress2" value="Doe"><br><br>
+        <input type="submit" (click)="editAddress(id)" value="Submit">
+      </form>
+
+   
+  
+</body>

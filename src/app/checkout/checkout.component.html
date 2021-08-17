@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+</head>
+<!-- <style>
+
+</style> -->
+<!-- </head> -->
+
+<body *ngIf="isCart ">
+    <div>
+        <div class="container" *ngFor="let  product of cart">
+            <div class="card">
+                <img class="card-img" src="{{product.product.thumbnail.url}}">
+                <div class="link">
+                    <h4>{{product.product.name}} X {{product.quantity}}</h4>
+                    <h4> {{product.totalPrice | currency:'INR':true}}</h4>
+
+                    <!-- <a (click)="addToCart(product.id)"><button>add to cart</button></a> -->
+                    <a [routerLink]="['/checkout/address']" (click)="createCheckout()"> <button>Checkout</button></a>
+
+                </div>
+            </div>
+        </div>
+        <h1>Total price = {{sumTotal | currency:'INR':true}}</h1>
+    </div>
+</body>
+
+<body *ngIf="isAddress">
+    <div>
+        <h2>Billing Address</h2>
+
+        <div (click)="updateBillingAddress(key)" class=btn1 *ngFor="let  key of userDetails.data.me.addresses ">
+            <!-- <div class="billing"> -->
+                <input type="checkbox" class="checkbox1">
+
+                <h5 class="addressText">{{key.firstName}}
+                    {{key.lastName}}
+                    <br>{{key.streetAddress1}}<br *ngIf="key.streetAddress2">{{key.streetAddress2}}<br>{{key.city}},{{key.countryArea}}<br>{{key.country.country}}
+                    <br>Postal Code- {{key.postalCode}}<br>phone-
+                    {{key.phone}} </h5>
+                <!-- <                                                             {{product.totalPrice}}</h4> -->
+                <!-- <a [routerLink]="['/checkout/address']">  <button>Checkout</button></a> -->
+
+            <!-- </div> -->
+                </div>
+        <h2>Shipping Address</h2>
+        <div (click)="updateShippingAddress(key)" class="btn1" *ngFor="let  key of userDetails.data.me.addresses">
+            <input type="checkbox" class="checkbox1">
+
+                <h5 class="addressText">{{key.cpmpanyName}}<br>{{key.firstName}}
+                    {{key.lastName}}
+                    <br>{{key.streetAddress1}}<br *ngIf="key.streetAddress2">{{key.streetAddress2}}<br>{{key.city}},{{key.countryArea}}<br>{{key.country.country}}
+                    <br>Postal Code- {{key.postalCode}}<br>phone-
+                    {{key.phone}} </h5>
+                <!-- <                                                             {{product.totalPrice}}</h4> -->
+                <!-- <a [routerLink]="['/checkout/address']">  <button>Checkout</button></a> -->
+
+                </div>
+        <a [routerLink]="['/checkout/shipping']"> <div class="btn2">Proceed</div></a>
+
+        <!-- <h1>Total price = {{sumTotal}}</h1> -->
+    </div>
+</body>
+
+<body *ngIf="isShippingMethod">
+    <div>
+
+        <h2>Shipping Methods</h2>
+        <div class="shipping"
+            *ngFor="let  key of shippingMethods[0].data.checkoutLinesUpdate.checkout.availableShippingMethods " style="display: inline-block;">
+
+            <a (click)="selectShippingMethod(key.id)"> <div class="shipping_methods">
+                <input type="checkbox" class="checkbox1" unchecked>
+                <h3>{{key.name}}</h3>
+                <h5>{{key.price.amount | currency:'INR':true}}</h5>
+            </div></a>
+        </div>
+        <a [routerLink]="['/checkout/payment']" (click)="storeShippingId()"> <button>Proceed to Pay</button></a>
+
+    </div>
+</body>
+
+
+<body *ngIf="isPayment">
+    <div>
+
+        <h2>Payment Methods</h2>
+        <div class="shipping"
+            *ngFor="let  key of checkoutLine[0].data.checkoutLinesUpdate.checkout.availablePaymentGateways " style="display: inline-block;">
+            <a (click)="selectPaymentMethod(key)"> <div class="shipping_methods">
+                <h3>{{key.name}}</h3>
+            </div></a>
+        </div>
+        <button id="rzp-button1" (click)="initPay(checkoutLine[0].data.checkoutLinesUpdate.checkout.totalPrice);">Pay</button>
+
+        <a   (click)="completeCheckoutPay1()"> <button>complete checkout</button></a>
+        <!-- <a [routerLink]="['/checkout/completed']" > <button>Proceed to Pay</button></a> -->
+
+
+    </div>
+</body>
+
+
+<body *ngIf="isOrderCompleted">
+    <div>
+
+        <h2>Thank You for Ordering</h2>
+        <a [routerLink]="['/home']" > <h4>Go to Home Page</h4></a>
+        <a [routerLink]="['/category']" > <h4>Continue Shopping</h4></a>
+
+
+        <!-- <div class="shipping"
+            *ngFor="let  key of checkoutLine[0].data.checkoutLinesUpdate.checkout.availablePaymentGateways " style="display: inline-block;">
+            <a (click)="selectPaymentMethod(key)"> <div class="shipping_methods">
+                <h3>{{key.name}}</h3>
+            </div></a>
+        </div>
+        <a  [routerLink]="['/checkout/completed']" (click)="completePayment()"> <button>Order</button></a> -->
+        <!-- <a [routerLink]="['/checkout/completed']" > <button>Proceed to Pay</button></a> -->
+
+
+    </div>
+</body>
+
+<body *ngIf="isEmptyCart">
+
+    <div class="container">
+        <div class="card">
+            <h1>YOUR CART IS EMPTY</h1>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<router-outlet></router-outlet>

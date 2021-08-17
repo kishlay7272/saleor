@@ -1,0 +1,12 @@
+<h1>The form element</h1>
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname" [(ngModel)]="firstName"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname" [(ngModel)]="lastName"><br><br>
+  <label for="lname1">Email:</label>
+  <input type="text" id="lname1" name="lname1" [(ngModel)]="email"><br><br>
+  <input type="submit" value="Save" (click)="editUser()">
+
+</form>

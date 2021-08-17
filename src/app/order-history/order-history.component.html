@@ -1,0 +1,21 @@
+<body *ngIf="order.length">
+
+    <table id="customers">
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Date Created</th>
+
+        </tr>
+        <tr *ngFor="let user of order">
+            <td>{{user.node.lines[0].variant.product.name}}</td>
+            <td>{{user.node.number}}</td>
+            <td>{{user.node.total.gross.amount | currency:'INR':true}}</td>
+            <td>{{user.node.created}}</td>
+
+        </tr>
+
+    </table>
+
+</body>

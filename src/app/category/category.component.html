@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <style>
+
+</style> -->
+</head>
+<body *ngIf="id">
+    <h2>Products</h2>
+    <div class="container" *ngFor="let  user of products" >
+        <div class="card"  >
+            <a [routerLink]="['/product/'+user.node.id]">   <img class="card-img" src="{{user.node.thumbnail.url}}" >
+                <div class="link">
+                    <h3>{{user.node.name}}</h3>      
+                    <h4>{{user.node.pricing.priceRange.start.gross.amount | currency:'INR':true}}</h4>
+                    <!-- <button [routerLink]="['/product/'+user.node.id]"> <h4>ADD TO CART</h4></button> -->
+                </div></a>
+        </div>
+      </div>
+<!-- <table id="customers">
+  <tr>
+    <th>Product Name</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let user of products">
+
+        <td>{{user.node.name}}</td>
+    <td>{{user.node.pricing.priceRange.start.gross.amount}}</td>
+    <a [routerLink]="['/product/'+user.node.id]"> <td>Buy</td></a>
+
+  </tr>
+  
+</table> -->
+
+</body>
+<body *ngIf="!id">
+    <div class="container" *ngFor="let  user of productList.data.categories.edges" >
+        <div class="card"  >
+            <a [routerLink]="['/category/'+user.node.id]">   <img class="card-img" src="{{user.node.backgroundImage.url}}" alt="Bologna">
+                <div class="link">
+                    <h1>{{user.node.name}}</h1>      
+                </div></a>
+        </div>
+      </div>
+    <!-- <table id="customers">
+        <tr>
+          <th>Category</th>
+        </tr>
+        <tr *ngFor="let user of productList.data.categories.edges">
+          <a [routerLink]="['/category/'+user.node.id]"><td>{{user.node.name}}</td></a>
+        </tr>
+        
+      </table> -->
+    </body>
+
+
+</html>
+
+<router-outlet></router-outlet>

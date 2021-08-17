@@ -1,0 +1,47 @@
+ .container{
+    width:480px;
+    height:480px;
+    position:relative;
+    margin-left: 20px;
+    margin-top: 80px;
+    display: inline-block;
+
+}
+.card{
+    top: 10px;
+    width:380px;
+    bottom: 10px;
+    right: 10px;
+    left:10px;
+    height:380px;
+    position:absolute
+}
+.card-img{
+    top: 10px;
+    bottom: 10px;
+    right: 10px;
+    left:10px;
+    width:360px;
+    height:360px;
+    position:absolute
+}
+.link{
+    top: 360px;
+    bottom: 0px;
+    right: 10px;
+    width:340px;
+    left:10px;
+    height:30px;
+    position:absolute
+}
+body {
+    padding: 2rem 0rem;
+  }
+  
+  .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+  } 
+
+
+
+  
